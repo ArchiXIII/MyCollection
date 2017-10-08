@@ -7,7 +7,7 @@ import java.util.function.Consumer;
  * Created by Черный on 03.10.2017.
  */
 public class ArrayListWithPredicate<E> extends ArrayList {
-    private ArrayList<Integer> predicate = new ArrayList<>();
+    private ArrayList<E> predicate = new ArrayList<>();
 
     transient Object[] elementData;
 
@@ -20,7 +20,7 @@ public class ArrayListWithPredicate<E> extends ArrayList {
         this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
     }
 
-    public void addPredicate(Integer...args) {
+    public void addPredicate(E...args) {
         Collections.addAll(predicate, args);
     }
 
@@ -36,7 +36,7 @@ public class ArrayListWithPredicate<E> extends ArrayList {
         public boolean hasNext() {
             if(cursor == ArrayListWithPredicate.this.size()) {
                 return false;
-            } else if(predicate.contains(elementData[cursor])) {
+            } else if(predicate.contains(elementData[cursor].toString())) {
                 if(++cursor != ArrayListWithPredicate.this.size()) {
                     hasNext();
                 } else return false;
