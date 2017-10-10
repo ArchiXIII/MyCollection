@@ -36,7 +36,7 @@ public class ArrayListWithPredicate<E> extends ArrayList {
         public boolean hasNext() {
             if(cursor == ArrayListWithPredicate.this.size()) {
                 return false;
-            } else if(predicate.contains(elementData[cursor].toString())) {
+            } else if(predicate.contains(elementData[cursor])) {
                 if(++cursor != ArrayListWithPredicate.this.size()) {
                     hasNext();
                 } else return false;

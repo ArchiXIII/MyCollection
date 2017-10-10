@@ -7,9 +7,9 @@ import java.util.Iterator;
  */
 public class Controller {
     public static void main(String[] args) {
-        ArrayListWithPredicate<String> myList = new ArrayListWithPredicate();
-        myList.addPredicate("5", "9", "4");
-        myList.add(Integer.toString(1));
+        ArrayListWithPredicate<Integer> myList = new ArrayListWithPredicate();
+        myList.addPredicate(5, 9, 4);
+        myList.add(1);
         myList.add(2);
         myList.add(5);
         myList.add(7);
