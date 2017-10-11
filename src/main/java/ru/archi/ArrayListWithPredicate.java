@@ -15,12 +15,9 @@ public class ArrayListWithPredicate<E> extends ArrayList {
 
     private static final int DEFAULT_CAPACITY = 10;
 
-    public ArrayListWithPredicate() {
+    public ArrayListWithPredicate(E...args) {
         super();
         this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
-    }
-
-    public void addPredicate(E...args) {
         Collections.addAll(predicate, args);
     }
 
@@ -48,11 +45,13 @@ public class ArrayListWithPredicate<E> extends ArrayList {
         public E next() {
             checkForComodification();
             int i = cursor;
-            if (i >= ArrayListWithPredicate.this.size())
+            if (i >= ArrayListWithPredicate.this.size()) {
                 throw new NoSuchElementException();
+            }
             Object[] elementData = ArrayListWithPredicate.this.elementData;
-            if (i >= elementData.length)
+            if (i >= elementData.length) {
                 throw new ConcurrentModificationException();
+            }
             cursor = i + 1;
             return (E) elementData[lastRet = i];
         }
