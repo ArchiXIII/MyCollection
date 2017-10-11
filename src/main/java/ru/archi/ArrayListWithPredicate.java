@@ -53,6 +53,10 @@ public class ArrayListWithPredicate<E> extends ArrayList {
                 throw new ConcurrentModificationException();
             }
             cursor = i + 1;
+
+            if(predicate.contains(elementData[cursor - 1])){
+                return next();
+            }
             return (E) elementData[lastRet = i];
         }
 
@@ -97,10 +101,6 @@ public class ArrayListWithPredicate<E> extends ArrayList {
             if (modCount != expectedModCount)
                 throw new ConcurrentModificationException();
         }
-    }
-
-    public ArrayListWithPredicate(int initialCapacity) {
-        super(initialCapacity);
     }
 
     @Override

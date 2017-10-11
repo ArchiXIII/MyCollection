@@ -17,7 +17,7 @@ public class Controller {
         Iterator itr = myList.iterator();
 
         while(itr.hasNext()) {
-            System.out.print(itr.next().toString() + " ");
+            System.out.print(itr.next() + " ");
         }
     }
 }
