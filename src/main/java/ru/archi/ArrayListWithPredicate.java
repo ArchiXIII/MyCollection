@@ -116,6 +116,36 @@ public class ArrayListWithPredicate<E> extends ArrayList {
         elementData[index] = element;
     }
 
+    @Override
+    public Object remove(int index) {
+        rangeCheck(index);
+
+        modCount++;
+        E oldValue = elementData(index);
+
+        int numMoved = ArrayListWithPredicate.this.size() - index - 1;
+        if (numMoved > 0)
+            System.arraycopy(elementData, index+1, elementData, index,
+                    numMoved);
+        elementData[ArrayListWithPredicate.this.size() - 1] = null; // clear to let GC do its work
+
+        return super.remove(index);
+    }
+
+    private void rangeCheck(int index) {
+        if (index >= ArrayListWithPredicate.this.size())
+            throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+    }
+
+    @SuppressWarnings("unchecked")
+    E elementData(int index) {
+        return (E) elementData[index];
+    }
+
+    private String outOfBoundsMsg(int index) {
+        return "Index: "+index+", Size: "+ArrayListWithPredicate.this.size();
+    }
+
     private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
 
     private void ensureCapacityInternal(int minCapacity) {

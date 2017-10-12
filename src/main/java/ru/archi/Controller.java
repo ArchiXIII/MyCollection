@@ -14,6 +14,8 @@ public class Controller {
         myList.add(7);
         myList.add(9);
 
+        myList.remove(1);
+
         Iterator itr = myList.iterator();
 
         while(itr.hasNext()) {
