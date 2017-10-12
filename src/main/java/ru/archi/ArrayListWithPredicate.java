@@ -7,7 +7,7 @@ import java.util.function.Consumer;
  * Created by Черный on 03.10.2017.
  */
 public class ArrayListWithPredicate<E> extends ArrayList {
-    private ArrayList<E> predicate = new ArrayList<>();
+    private List<E> predicate = new ArrayList<>();
 
     transient Object[] elementData;
 
